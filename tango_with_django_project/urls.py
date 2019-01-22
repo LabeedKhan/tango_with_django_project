@@ -13,9 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+
+# mapping URL for user
+# so user can see view
+# importing views
+
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls import include
+from rango import views
 
+# following code creates intial mapping
 urlpatterns = [
+    url(r'^$', views.index, name='index'),
+    # this new code looks for url string that matches ^rango/
+    url(r'^rango/', include('rango.urls')),
     url(r'^admin/', admin.site.urls),
 ]
+# server does shows new message 
+
